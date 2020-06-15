@@ -25,58 +25,81 @@
 
               <div class="intro">
                 <div class="col-md-12">
-                  <h1>Rock Paper and Sicssors</h1>
-                  <button class="btn btn-outline-success" id="play-btn">Lets play</button>
+                  <h1>Rock Paper and Scissors</h1>
+                  <button class="btn btn-outline-success" id="play-btn">Start Game</button>
                 </div>
               </div>
             </div>
 
-            <div class="score">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="player-score">
-                    <h2>Player</h2>
-                    <p>0</p>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="round">
-                    <h2>Round</h2>
-                    <p>0</p>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="computer-score">
-                    <h2>Computer</h2>
-                    <p>0</p>
-                  </div>
-                </div>
-              </div>
+            <div class="match">
 
-              <div class="match">
-                <div class="row">
-                  <div class="col-md-12">
-                    <h2 class="winner">Choose Your Destiny</h2>
+              <div class="score">
+                <div class="row mb-4">
+                  <div class="col-md-4">
+                    <div class="player-score">
+                      <h2>Player</h2>
+                      <p class="player-score-display">0</p>
+                    </div>
                   </div>
-  
-                  <div class="col-md-12">
-                    <div class="hands">
-                      <img class="player-hand" src="images/rock.png" alt="">
-                      <img class="bot-hand" src="images/rock.png" alt="">
+                  <div class="col-md-4">
+                    <div class="round">
+                      <h2>Round</h2>
+                      <p class="roundNumber">0</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="computer-score">
+                      <h2>Computer</h2>
+                      <p class="bot-score-display">0</p>
                     </div>
                   </div>
                 </div>
 
+                <div class="container pb-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h2 class="display-text">Choose Your Destiny</h2>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <div class="player-rounds-won">
+                          <h3>Player Ronds Won</h3>
+                          <p class="player-rounds-won-display">0</p>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="hands">
+                          <img class="player-hand" src="images/rock.png" alt="">
+                          <img class="bot-hand" src="images/rock.png" alt="">
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="bot-rounds-won">
+                          <h3>Bot Ronds Won</h3>
+                          <p class="bot-rounds-won-display">0</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+              <div class="container">
                 <div class="options">
                   <div class="row">
                     <div class="col-md-12">
                       <button class="btn btn-outline-success rock">rock</button>
                       <button class="btn btn-outline-success paper">paper</button>
-                      <button class="btn btn-outline-success sicssors">sicssors</button>
+                      <button class="btn btn-outline-success sicssors">scissors</button>
                     </div>
                   </div>
                   
                 </div>
+              </div>
               </div>
             </div>
           </div>
