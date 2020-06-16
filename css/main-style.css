@@ -17,6 +17,7 @@ p {
 
 button {
   font-family: 'Abril Fatface', cursive;
+
 }
 
 .intro {
@@ -25,8 +26,7 @@ button {
   text-align: center;
 }
 
-#play-btn {
-  width: 180px;
+#play-btn, .reset-btn {
   margin: 1%;
 }
 
@@ -62,6 +62,16 @@ button {
   height: 4pc;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+#mode-btn-on, #mode-btn-off {
+  width: 15%;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.game {
+  width: 100%;
 }
 
 /* JS Classes */

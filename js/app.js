@@ -4,13 +4,17 @@ function mainGame() {
 
   let playerScore = 0;
   let botScore = 0;
-  let roundNum = 0;
+  let roundNum = 1;
   let playerRoundsWon = 0;
   let botRoundsWon = 0;
+  let singleMode = false;
 
   const displayText = document.querySelector(".display-text");
   const playbtn = document.getElementById("play-btn");
-  const rounds = document.querySelector(".roundNumber");
+  const modeBtn = document.querySelector("#singe-btn");
+
+  const match = document.querySelector(".match");
+  const roundNumberDisplay = document.querySelector(".round-number-display");
   const bRoundsWonDisplay = document.querySelector(".bot-rounds-won-display");
   const pRoundsWonDiplay = document.querySelector(".player-rounds-won-display");
   const playerScoreDisplay = document.querySelector(".player-score-display");
@@ -19,12 +23,31 @@ function mainGame() {
   // Starts the game 
   function startGame() {
 
-    const match = document.querySelector(".match");
-
     playbtn.addEventListener("click", function() {
+      singleMode = false;
+      resetGame();
       match.classList.add('fadeIn');
-      rounds.innerHTML = "1";
+      roundNumberDisplay.innerHTML = roundNum;
+      alert("ROUND 1 NORMAL MODE 2 OUT OF 3");
     });
+  }
+
+  // Sellect mode function 
+  function modeToggle() {
+    
+    modeBtn.addEventListener("click", function() {
+      singleMode = true;
+      resetGame();
+      
+
+      if (singleMode == true) {
+        match.classList.add('fadeIn');
+        roundNumberDisplay.innerHTML = roundNum;
+        alert("ROUND 1 SINGLE MODE");
+      }
+
+    });
+    return;
   }
 
   // play a match 
@@ -97,6 +120,7 @@ function mainGame() {
     displayText.textContent = "Player Wins";
     playerScore += 1;
     playerScoreDisplay.innerHTML = playerScore;
+    pRoundsWon();
   }
 
   // Score Update Bot 
@@ -107,51 +131,100 @@ function mainGame() {
     displayText.textContent = "Bot Wins";
     botScore += 1;
     botScoreDisplay.innerHTML = botScore;
+    bRoundsWon();
   }
 
-  // Round Update Player 
+  // scoring Update Player 
   function pRoundsWon() {
+
+    if (singleMode == true && playerScore === 1) {
+      botScoreDisplay.innerHTML = botScore;
+      winner();
+    }
     
-    if(playerScore == 5) {
+    if(playerScore === 3) {
       playerRoundsWon += 1;
       pRoundsWonDiplay.innerHTML = playerRoundsWon;
+      roundsInfoUpdate();
+      playerScoreDisplay.innerHTML = playerScore;
+      botScoreDisplay.innerHTML = botScore;
+      alert("You won the round!!!");
     }
 
-    // update Rounds Player
-    if(playerScore == 5 || 10 || 15 || 20) {
-      roundNum += 1;
-      rounds.innerHTML = roundNum;
-      playerScoreDisplay.innerHTML = "0";
+    if(playerRoundsWon === 2) {
+      pRoundsWonDiplay.innerHTML = playerRoundsWon;
+      winner();
     }
+    return;
   }
 
-  // Round Update bot 
+  // scoring Update Bot 
   function bRoundsWon() {
 
-    // update Rounds Bot
-    if(botScore == 5 || 10 || 15 || 20) {
-      roundNum = roundNum + 1;
-      rounds.innerHTML = roundNum;
+    if (singleMode == true && botScore === 1) {
+      botScoreDisplay.innerHTML = botScore;
+      winner();
     }
     
-    if(playerScore == 5) {
-      playerRoundsWon += 1;
-      pRoundsWonDiplay.innerHTML = playerRoundsWon;
+    if(botScore === 3) {
+      botRoundsWon += 1;
+      bRoundsWonDisplay.innerHTML = botRoundsWon;
+      roundsInfoUpdate();
+      playerScoreDisplay.innerHTML = playerScore;
+      botScoreDisplay.innerHTML = botScore;
+      alert("You Lose the Round");
     }
+
+    if(botScore === 2) {
+      bRoundsWonDisplay.innerHTML = botRoundsWon;
+      winner();
+    }
+    return;
   }
 
-  // Score Update 
-  // function bRoundsWon() {
-    
-  //   if(playerScore == 5) {
-  //     playerRoundsWon += 1;
-  //     pRoundsWonDiplay.innerHTML = playerRoundsWon;
-  //   }
-  // }
+  // update Rounds Player
+  function roundsInfoUpdate() {
 
+    roundNum += 1;
+    roundNumberDisplay.innerHTML = roundNum;
+    botScore = 0;
+    playerScore = 0;
+    return;
+  }
+
+  // Reset Button 
+  function resetGame() {
+    playerScore = 0;
+    botScore = 0;
+    roundNum = 1;
+    playerRoundsWon = 0;
+    botRoundsWon = 0;
+
+    playerScoreDisplay.innerHTML = playerScore;
+    pRoundsWonDiplay.innerHTML = playerScore;
+    bRoundsWonDisplay.innerHTML = botRoundsWon;
+    botScoreDisplay.innerHTML = botScore;
+    roundNumberDisplay.innerHTML = roundNum;
+  }
+
+  // Winner Function 
+  function winner() {
+
+    setTimeout(function() { 
+      alert("YOU WINNER CONGRATS 🎊🎉");
+    }, 200);
+    resetGame();
+  }
+
+  // // Delay Alerts 
+  // setTimeout(function() { 
+  //   alert("Death"); 
+  // }, 1000);
 
   // calling the inner functions
   startGame();
+  modeToggle();
+  resetGame();
   playMatch();
 }
 
