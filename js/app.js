@@ -163,7 +163,7 @@ function mainGame() {
 
     if (singleMode == true && botScore === 1) {
       botScoreDisplay.innerHTML = botScore;
-      winner();
+      loser();
     }
     
     if(botScore === 3) {
@@ -175,9 +175,9 @@ function mainGame() {
       alert("You Lose the Round");
     }
 
-    if(botScore === 2) {
+    if(botRoundsWon === 2) {
       bRoundsWonDisplay.innerHTML = botRoundsWon;
-      winner();
+      loser();
     }
     return;
   }
@@ -211,15 +211,20 @@ function mainGame() {
   function winner() {
 
     setTimeout(function() { 
-      alert("YOU WINNER CONGRATS 🎊🎉");
+      alert("YOU WIN CONGRATS 🎊🎉");
     }, 200);
     resetGame();
   }
 
-  // // Delay Alerts 
-  // setTimeout(function() { 
-  //   alert("Death"); 
-  // }, 1000);
+  // Winner Function 
+  function loser() {
+
+    setTimeout(function() { 
+      alert("YOU LOSE 😕😕");
+    }, 200);
+    resetGame();
+  }
+
 
   // calling the inner functions
   startGame();
